@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <!--단건-->
+  <form name="singleForm" onsubmit="return false">
+    <input type="file" name="avatar" > <!--multerApp에서 파일을 avatar라는 이름으로 받기로 함-->
+    <button type="button">단건등록</button>
+  </form>
+
+ 
+  <script>
+    singleForm.querySelector('button').addEventListener('click',function(event){
+      event.preventDefault()
+      let formData = new FormData(singleForm)  //FormData 객체rk content-type : multipart-form 을 가지고있다. 통신을 위한 객체
+      fetch('http://localhost:5000/profile',{
+        method : 'post',
+        body: formData
+      })
+      .then(res => res.json())
+      .then(result=>{
+        console.log(result);
+      })
+      .catch(err=>
+        console.log(err)
+      )
+    })
+   
+  </script>
+
+    
+
+  <!--multiple-->
+    
+    <input type="file" name="photos" multiple>
+    <button type="button" id="upBtn">다중 등록</button>
+ 
+    <script>
+      document.querySelector('#upBtn').addEventListener('click',function(envet){
+        even.preventDefault()
+        let inputFiles = envet.target.previousElementSibling
+        let fileList = inputFiles.files
+
+        let formData = new FormData()
+        for(let file of fileList){
+          formData.append('photos',file)
+        }
+
+        fetch('http://localhost:5000/photos',{
+          method : 'post',
+          body : formData
+        })
+        .then(res => res.json)
+        .then(result => {
+          console.log(result);
+        })
+        .catch(err=>console.log(err))
+       
+      })
+      
+    </script>
+</body>
+</html>

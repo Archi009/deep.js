@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CORS</title>
+</head>
+<body>
+    <!--
+                    
+      *****************************************************************
+                    CORS의 SAME ORIGIN POLICY 위반!!!!
+      *****************************************************************
+  
+    -->
+  
+  <script>
+    fetch('http://localhost:3000/login',{
+      method:'post',
+      headers : {
+        'Content-type' : 'application/json'
+      },
+      body : JSON.stringify({id:"Hong",pwd:"a1234"})
+    })
+    .then(res =>res.json())
+    .then(result=> console.log(result))
+    .catch(err =>console.log(err))
+  </script>
+</body>
+</html>
