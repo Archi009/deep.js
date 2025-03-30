@@ -27,7 +27,7 @@ app.listen(5000, ()=>{
 app.post('/profile',upload.single('avatar'),(req,res)=>{ //'avatar'를 필드명으로 파일을 받아오겠다.
   console.log(req.file);      //게시글의 미디어파일
   console.log(req.body);      //게시글의 내용등 
-  res.send(file.path)
+  res.send(req.file.path)
 })
 
 app.post('/photos',upload.array('photos',8),(req,res)=>{ //upload 여러개 메소드는 any 와 array 가 있는데 any는 제한이 없어서 서버 물량 터짐. 제한을 둔다 8
