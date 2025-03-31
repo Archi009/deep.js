@@ -1,8 +1,8 @@
-// test-server/customer-route.js
+// test-server/emp-route.js
 // 라우터 모듈 
 const express = require('express')
 const router = express.Router()
-const cusServ = require('../service/cusService.js')
+const cusServ = require('../service/empService.js')
 
 
 //test
@@ -11,31 +11,31 @@ const cusServ = require('../service/cusService.js')
 //   res.send(list)
 // })
 
-router.get('/customers',async (req,res)=>{
+router.get('/employees',async (req,res)=>{
     let list =  await cusServ.listAll()
     res.send(list)
   })
 
-router.get('/customers/:id',async(req,res)=>{
+router.get('/employees/:id',async(req,res)=>{
   let id = req.params.id
   let list = await cusServ.listOne(id)
   res.send(list)
 })
 
-router.post('/customers',async(req,res)=>{
+router.post('/employees',async(req,res)=>{
   let cusInfo = req.body
   let result = await cusServ.insertOne(cusInfo)
   res.send(result)
 })
 
-router.put('/customers/:id',async(req,res)=>{
+router.put('/employees/:id',async(req,res)=>{
   let id = req.params.id
   let cusInfo = req.body
   let result = await cusServ.modeOne(cusInfo,id)
   res.send(result)
 })
 
-router.delete('/customers/:id',async(req,res)=>{
+router.delete('/employees/:id',async(req,res)=>{
   let id = req.params.id
   let result = await cusServ.delOne(id)
   res.send(result)

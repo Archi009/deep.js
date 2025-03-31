@@ -1,7 +1,7 @@
 // test-server/mapper/cusmapper.js
 
 const mariaDB = require('mariadb/callback')
-const sqlList = require('./sql/customer.js')
+const sqlList = require('./sql/employees.js')
 
 const connectionPool = mariaDB.createPool({
   //연결

@@ -1,6 +1,6 @@
 // test-server/servcie/cusService.js
 
-const mariaDB = require('../mapper/cusmapper.js')
+const mariaDB = require('../mapper/empMapper.js')
 
 
 const listAll=async()=>{

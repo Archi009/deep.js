@@ -4,7 +4,7 @@ console.log(process.env);
 
 const express = require('express')
 const app = express()
-const cusRouter = require('./router/customer-route.js')
+const cusRouter = require('./router/emp-route.js')
 const port = 3000
 
 app.use(express.urlencoded({extended:false}))
